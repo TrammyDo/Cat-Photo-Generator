@@ -1,32 +1,62 @@
 <html>
     <head>
-        <title>Cat Photo Generator </title>
+        <title> Cat Photo Generator </title>
     </head>
     <script>
-        function getRandomImage() {
-            var randomImage = new Array ();
-            randomImage[0] = "https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg";
-            randomImage[1] = "https://images4.alphacoders.com/206/20656.jpg";
-            randomImage[2] = "https://images3.alphacoders.com/865/86539.jpg";
-            randomImage[3] = "https://images4.alphacoders.com/435/43556.jpg";
-            randomImage[4] = "https://images.alphacoders.com/894/89473.jpg";
-            randomImage[5] = "https://images3.alphacoders.com/849/84959.jpg";
-            randomImage[6] = "https://images4.alphacoders.com/913/91394.jpg";
-            randomImage[7] = "https://images3.alphacoders.com/114/114969.jpg";
-            randomImage[8] = "https://images8.alphacoders.com/839/839692.jpg";
-            randomImage[9] = "https://images4.alphacoders.com/106/1062256.jpg";
-            randomImage[10] = "https://images8.alphacoders.com/113/1130907.jpg";
+        function displayRandomImage() {
+            var imageArray = [
+            {
+                src: "https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg",
+            },
+            {
+                src: "https://images4.alphacoders.com/206/20656.jpg",
+            },
+            {
+                src: "https://images3.alphacoders.com/865/86539.jpg",
+            },
+            {
+                src: "https://images4.alphacoders.com/435/43556.jpg",
+            },
+            {
+                src: "https://images.alphacoders.com/894/89473.jpg",
+            },
+            {
+                src: "https://images.alphacoders.com/894/89473.jpg",
+            },
+            {
+                src: "https://images4.alphacoders.com/913/91394.jpg",
+            },
+            {
+                src: "https://images3.alphacoders.com/114/114969.jpg",
+            },
+            {
+                src: "https://images8.alphacoders.com/839/839692.jpg",
+            },
+            {
+                src: "https://images4.alphacoders.com/106/1062256.jpg",
+            },
+            {
+                src: "https://images8.alphacoders.com/113/1130907.jpg",
+            }];
 
-            var number = Math.floor(Math.random()*randomImage.length);  
-            return document.getElementById("result").innerHTML = '<img src="'+randomImage[number]+'" />';  
+           function getRandomImage(min,max) {
+                imgNo = Math.floor(Math.random() * (max - min + 1)) + min;
+                return imageArray[imgNo];
+            }
+
+            var newImage = getRandomImage(0, imageArray.length - 1);
+
+            document.getElementById("imgCat").src = newImage.src;
+            document.getElementById("imgCat").style = "display: block; width: 480; height: 400; margin: 0 auto";
         }
-
     </script>
+
     <body>
-        <h1 style = "color:#E77471; text-align: center;">^._.^ Cat Photo Generator ^._.^</h1>
-        <h4>Welcome to my cat photo generator! Click the button to generate a random photo of a cat!</h4>
-        <button onclick = "setInterval(getRandomImage, 2000)"> Generate Photo</button>  
-        <br> <br>
-        <span id="result" align ="center"></span>
+        <div style ="text-align:center;">
+            <h1 style = "color:#E77471;">^._.^ Cat Photo Generator ^._.^</h1>
+            <h4>Welcome to my cat photo generator! Click the button to generate a random photo of a cat!</h4>
+            <button onclick = "displayRandomImage();"> Generate Photo</button>
+            <img style = "display: none;" src="" id = "imgCat">
+        </div>
     </body>
 </html>
